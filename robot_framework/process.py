@@ -78,7 +78,7 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
     
     # Print results
     for result in results:
-        orchestrator_connection.log_info(result)
+        orchestrator_connection.log_info(str(result))
 
     # Write results to a CSV file
     csv_file = today.strftime('%Y-%m-%d_%H%M%S') + "_Graddage.csv"
