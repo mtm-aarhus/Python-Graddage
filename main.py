@@ -9,10 +9,16 @@ import sys
 script_directory = os.path.dirname(os.path.realpath(__file__))
 os.chdir(script_directory)
 
-subprocess.run("pip install uv", check=True)
-subprocess.run("uv venv", check=True)
-subprocess.run(r'.venv\Scripts\pip install uv', check=True)
-subprocess.run(r'.venv\Scripts\uv pip install .', check=True)
+# Install uv
+subprocess.run([sys.executable, "-m", "pip", "install", "uv"], check=True)
+
+# Create virtual environment
+subprocess.run(["uv", "venv"], check=True)
+
+# Install packages in the virtual environment
+subprocess.run([r".venv\Scripts\pip", "install", "uv"], check=True)
+subprocess.run([r".venv\Scripts\pip", "install", "."], check=True)
+
 
 command_args = [r".venv\Scripts\python", "-m", "robot_framework"] + sys.argv[1:]
 
