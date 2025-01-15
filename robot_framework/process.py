@@ -98,7 +98,7 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
     sftp_password = credentials.password
     
     # Set up the SFTP connection
-    transport = paramiko.Transport((sftp_server, sftp_port))
+    transport = paramiko.Transport((sftp_server, int(sftp_port)))
     transport.connect(username=sftp_user, password=sftp_password)
     
     with paramiko.SFTPClient.from_transport(transport) as sftp:
