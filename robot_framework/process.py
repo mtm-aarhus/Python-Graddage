@@ -14,8 +14,7 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
     orchestrator_connection.log_trace("Running process.")
     # Set the locale to Danish
     locale.setlocale(locale.LC_TIME, 'da_DK.UTF-8')
-    orchestrator_connection.log_info()
-
+    
     # Calculate dates
     today = datetime.now()
     from_date = today - timedelta(days=30)
